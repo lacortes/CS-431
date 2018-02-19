@@ -13,11 +13,11 @@ public class FCFS implements Scheduler {
     public LinkedList<Job> processJobs() {
         int counter = 0;
 
-        // Process Every job
+        // Process Every job in order
         for (int i = 0; i < jobs.size(); i++) {
             Job job = jobs.get(i);
             job.setBeginTime(counter); // job begins
-            counter += job.getProcessingTime(); // Get job's processing time
+            counter += job.getRemainingTime(); // Get job's processing time
             job.reduceTime(counter);  // Run job for the duration of its processing time
             job.setEndTime(counter);  // Job ends at this time
         }

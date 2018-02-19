@@ -1,22 +1,24 @@
 package cortes.luis;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        LinkedList<Job> jobs  = JobUtil.readInJobs("testdata1.txt");
-        for (Job job : jobs) {
+        LinkedList<Job> jobs  = JobUtil.readInJobs("testdata2.txt");
+
+        Scheduler fcfs = new FCFS(JobUtil.getJobsCopy(jobs));
+        LinkedList<Job> processed = fcfs.processJobs();
+        System.out.println();
+        for (Job job : processed) {
             System.out.println(job);
         }
 
-        Scheduler fcfs = new FCFS(jobs);
-        jobs = fcfs.processJobs();
         System.out.println();
-        for (Job job : jobs) {
-            System.out.println(job);
-        }
+        System.out.println();
+        SJF sjf = new SJF(JobUtil.getJobsCopy(jobs));
+
+        LinkedList<Job> check = sjf.processJobs();
+        check.forEach(job -> System.out.println(job));
     }
 }

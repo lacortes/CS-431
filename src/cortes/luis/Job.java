@@ -2,7 +2,7 @@ package cortes.luis;
 
 public class Job {
     private int processingTime;
-    private int currentTime;
+    private int remainingTime;
     private int beginTime;
     private int endTime;
     private String name;
@@ -10,7 +10,7 @@ public class Job {
     public Job(String name, int processingTime) {
         this.name = name;
         this.processingTime = processingTime;
-        this.currentTime = processingTime;
+        this.remainingTime = processingTime;
     }
 
     public int getBeginTime() {
@@ -30,12 +30,16 @@ public class Job {
     }
 
     public void reduceTime(int minusTime) {
-        if (currentTime > 0)
-            this.currentTime -= minusTime;
+        if (remainingTime > 0)
+            this.remainingTime -= minusTime;
     }
 
-    public int getProcessingTime() {
-        return this.processingTime;
+    public int getRemainingTime() {
+        return this.remainingTime;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override

@@ -3,13 +3,10 @@ package cortes.luis;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class JobUtil {
     public static LinkedList<Job> readInJobs(String fileName) {
@@ -27,5 +24,18 @@ public class JobUtil {
             ex.printStackTrace();
         }
         return jobs;
+    }
+
+    public static LinkedList<Job> getJobsCopy(LinkedList<Job> jobs) {
+        LinkedList<Job> copy = new LinkedList<>();
+
+        for (int i = 0; i < jobs.size(); i++) {
+            // Copy original values into a copy one
+            String name = jobs.get(i).getName();
+            int time = jobs.get(i).getRemainingTime();
+            Job newJob = new Job(name, time);
+            copy.add(newJob);
+        }
+        return copy;
     }
 }
