@@ -24,4 +24,8 @@ public class FCFS implements Scheduler {
         return this.jobs;
     }
 
+    @Override
+    public Type getType() {
+        return Type.FIRST_COME_FIRST_SERVED;
+    }
 }

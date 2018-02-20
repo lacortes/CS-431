@@ -11,6 +11,8 @@ public class Job {
         this.name = name;
         this.processingTime = processingTime;
         this.remainingTime = processingTime;
+        this.beginTime = -1;
+        this.endTime = -1;
     }
 
     public int getBeginTime() {
@@ -23,6 +25,10 @@ public class Job {
 
     public int getEndTime() {
         return endTime;
+    }
+
+    public int getProcessingTime() {
+        return processingTime;
     }
 
     public void setEndTime(int endTime) {

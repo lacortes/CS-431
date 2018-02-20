@@ -38,4 +38,11 @@ public class JobUtil {
         }
         return copy;
     }
+
+    public static Job jobClone(Job job) {
+        Job copy = new Job(job.getName(), job.getProcessingTime());
+        copy.setBeginTime(job.getBeginTime());
+        copy.setEndTime(job.getEndTime());
+        return copy;
+    }
 }
