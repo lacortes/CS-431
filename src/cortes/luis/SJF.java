@@ -37,4 +37,9 @@ public class SJF implements Scheduler {
         incoming.forEach(job -> temp.add(job));
         return temp;
     }
+
+    @Override
+    public Type getType() {
+        return Type.SHORTEST_JOB_FIRST;
+    }
 }
