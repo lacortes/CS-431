@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Main {
 
     public static void main(String[] args) {
-        // Number of slices for Round Robing
+        // Number of slices for Round Robin
         final int SlICE_1 = 2;
         final int SlICE_2 = 5;
 
@@ -28,7 +28,20 @@ public class Main {
             for (Scheduler scheduler : schedulers) {
                 System.out.println("Type: " + scheduler.getType());
                 LinkedList<Job> completed = scheduler.processJobs();
-                completed.forEach(job -> System.out.println("\t"+job));
+                completed.forEach(job -> {
+                    System.out.println("\t"+job.getName()+"   "
+                            +"Start: "+job.getBeginTime()+"   "
+                            +"End: "+job.getEndTime() + "   "
+                            + (scheduler instanceof RR ?
+                                (job.getRemainingTime() == 0 ? "Completed":"")
+                                :""));
+                });
+
+                System.out.println("+----------------------------");
+                System.out.println("|  "+"APT: "+scheduler.getAPT());
+                System.out.println("|  "+"ATT: "+scheduler.getATT());
+                System.out.println("|  "+"AWT: "+scheduler.getAWT());
+                System.out.println("+----------------------------");
             }
             System.out.println("+----------------------------------------------------------+");
             System.out.println("|###################-----End Of test-----##################|");
