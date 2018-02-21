@@ -25,4 +25,9 @@ public interface Scheduler {
 
     public LinkedList<Job> processJobs();
     public Type getType();
+    public double getATT();
+    public double getAPT();
+    default double getAWT() {
+        return getATT() - getAPT();
+    }
 }
